@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
 import Mercury from "../../images/Mercury.png"
 import Venus from "../../images/Venus.png"
 import Earth from "../../images/Earth.png"
@@ -16,62 +18,53 @@ class PlanetGame extends Component {
         merc: false, venus: false, earth: false, mars: false,
         jup: false, sat: false, uran: false, nept: false,
         targetplanet: "",
-        info: 0
-    }
-
-    stateUpdateHelper = (planet) => {
-        const planetMap = {
-            merc: "Mercury",
-            venus: "Venus",
-            earth: "Earth",
-            mars: "Mars",
-            jup: "Jupiter",
-            sat: "Saturn",
-            uran: "Uranus",
-            nept: "Neptune"
-        }
-        this.setState({planet: true, targetplanet: planetMap[planet]});
+        info: 0,
+        start: false
     }
 
     setTarget = () => {
         var target = Math.floor(Math.random() * 8) + 1;
-        if(target == 1) {
-            this.stateUpdateHelper("merc");
+        if(target === 1) {
+            this.setState({merc: true, targetplanet: "Mercury"});
         }
-        else if(target == 2) {
-            this.stateUpdateHelper("venus");//this.setState({venus: true, targetplanet: "Venus"});
+        else if(target === 2) {
+            this.setState({venus: true, targetplanet: "Venus"});
         }
-        else if(target == 3) {
-            this.stateUpdateHelper("earth");//this.setState({earth: true, targetplanet: "Earth"});
+        else if(target === 3) {
+            this.setState({earth: true, targetplanet: "Earth"});
         }
-        else if(target == 4) {
-            this.stateUpdateHelper("mars");//this.setState({mars: true, targetplanet: "Mars"});
+        else if(target === 4) {
+            this.setState({mars: true, targetplanet: "Mars"});
         }
-        else if(target == 5) {
-            this.stateUpdateHelper("jup");//this.setState({jup: true, targetplanet: "Jupiter"});
+        else if(target === 5) {
+            this.setState({jup: true, targetplanet: "Jupiter"});
         }
-        else if(target == 6) {
-            this.stateUpdateHelper("sat");//this.setState({sat: true, targetplanet: "Saturn"});
+        else if(target === 6) {
+            this.setState({sat: true, targetplanet: "Saturn"});
         }
-        else if(target == 7) {
-            this.stateUpdateHelper("uran");//this.setState({uran: true, targetplanet: "Uranus"});
+        else if(target === 7) {
+            this.setState({uran: true, targetplanet: "Uranus"});
         }
-        else if(target == 8) {
-            this.stateUpdateHelper("nept");//this.setState({nept: true, targetplanet: "Neptune"});
+        else if(target === 8) {
+            this.setState({nept: true, targetplanet: "Neptune"});
         }
     }
 
+    setStart = () => {
+        this.setState({start: true});
+        this.setTarget();
+    }
+
     displayInfo = () => {
-        {
-            if (this.state.info === 0) {
-                this.setState({
-                    info: 1
-                })
-            } else {
-                this.setState({
-                    info: 0
-                })
-            }
+        console.log("Correct")
+        if (this.state.info === 0) {
+            this.setState({
+                info: 1
+            })
+        } else {
+            this.setState({
+                info: 0
+            })
         }
     }
 
@@ -82,21 +75,22 @@ class PlanetGame extends Component {
     render () {
         return (<div>
             <div>
-                {this.setTarget}
+                
                 <h1 className="titles">Our Solar System</h1>
-                <p><h3 className="titles">Select {this.state.targetplanet}</h3></p>
+                <p className="start" ><Button variant="contained" onClick={this.setStart}>Start</Button></p>
+                {this.state.start ? <h3 className="titles">Select {this.state.targetplanet}</h3> : ""}
             </div>
-            <div>
-                <img className="planets" src={Mercury} onClick={this.state.merc ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" src={Venus} onClick={this.state.venus ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain()}/>
+            <div align="center">
+                <img className="planets" alt="" src={Mercury} onClick={this.state.merc ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img className="planets" alt="" src={Venus} onClick={this.state.venus ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img className="planets" alt="" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img className="planets" alt="" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain()}/>
             </div>
-            <div>
-                <img className="planets" src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img src={Saturn} width="300" height="200" onClick={this.state.sat ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img src={Uranus} width="300" height="200" onClick={this.state.uran ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" src={Neptune} onClick={this.state.nept ? this.displayInfo : this.tryAgain()}/>
+            <div align="center">
+                <img className="planets" alt=""  src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img alt="" src={Saturn} width="300" height="200" onClick={this.state.sat ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img alt="" src={Uranus} width="300" height="200" onClick={this.state.uran ? this.displayInfo : this.tryAgain()}/> &nbsp;
+                <img className="planets" alt="" src={Neptune} onClick={this.state.nept ? this.displayInfo : this.tryAgain()}/>
             </div>
 
         </div>)
