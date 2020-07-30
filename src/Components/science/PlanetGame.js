@@ -77,7 +77,7 @@ class PlanetGame extends Component {
             <div>
                 
                 <h1 className="titles">Our Solar System</h1>
-                <p className="start" ><Button variant="contained" onClick={this.setStart}>Start</Button></p>
+                <p className="start" >{this.state.start ? "" : <Button variant="contained" onClick={this.setStart}>Start</Button>}</p>
                 {this.state.start ? <h3 className="titles">Select {this.state.targetplanet}</h3> : ""}
             </div>
             <div align="center">
