@@ -142,3 +142,22 @@ html{
   text-align: center;
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
+.planets{
+  height: 200px;
+  width: 200px;
+}
+
+.gridRoot {
+  flex-grow: 1;
+  height: 50vw;
+  width: 50vw;
+  
+}
+
+.gridCard {
+  height: 10vw;
+  width: 10vw;
+  margin-top: 2vw;
+  text-align: center;
+}

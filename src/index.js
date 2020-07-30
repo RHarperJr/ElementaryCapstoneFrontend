@@ -11,6 +11,7 @@ import WeightGame from './Components/math/WeightGame';
 import PlanetGame from './Components/science/PlanetGame';
 import GeographyGame from './Components/geography/GeographyGame';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
   
 const myRoutes = (
   <Router>
@@ -26,6 +27,7 @@ const myRoutes = (
         <Route component={NotFound} />
       </Switch>
     </div>
+    <Footer />
   </Router>
 )
 
