@@ -120,7 +120,7 @@ class DiscountCalc extends Component {
                             </p>
                             <p>
                                 Original Price - Savings = Final Price
-                    </p>
+                            </p>
                             <p>
                                 {this.state.price} - {this.state.savings} = {this.state.finalValue}
                             </p>
