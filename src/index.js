@@ -7,10 +7,10 @@ import { Route, Link, NavLink, Switch, BrowserRouter as Router } from 'react-rou
 import NotFound from './NotFound';
 import MathMain from './Components/math/MathMain';
 import DiscountCalc from './Components/math/DiscountCalc';
+import WeightGame from './Components/math/WeightGame';
 import PlanetGame from './Components/science/PlanetGame';
 import GeographyGame from './Components/geography/GeographyGame';
-import WeightGame from './Components/math/WeightGame';
-
+  
 const myRoutes = (
   <Router>
     <div>
