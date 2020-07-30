@@ -10,21 +10,12 @@ import DiscountCalc from './Components/math/DiscountCalc';
 import WeightGame from './Components/math/WeightGame';
 import PlanetGame from './Components/science/PlanetGame';
 import GeographyGame from './Components/geography/GeographyGame';
+import Header from './Components/Header';
   
 const myRoutes = (
   <Router>
+    <Header />
     <div>
-      <ul>
-        <li>
-          <NavLink exact to="/math">Math</NavLink>
-        </li>
-        <li>
-          <NavLink to="/science">Science</NavLink>
-        </li>
-        <li>
-          <NavLink to="/geography">Geography</NavLink>
-        </li>
-      </ul>
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/math" component={MathMain} />
@@ -42,8 +33,3 @@ ReactDOM.render(
   myRoutes,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

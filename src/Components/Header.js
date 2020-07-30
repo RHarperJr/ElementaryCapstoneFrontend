@@ -1,39 +1,86 @@
-import logo from '../images/logo.png';
-import React, { Component } from 'react';
+import React from 'react';
+import { Switch, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import PublicIcon from '@material-ui/icons/Public';
+import AddIcon from '@material-ui/icons/Add';
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 
-class Header extends Component {
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
-    state = {
-        time: 0
-    }
-
-    increment = () => {
-        this.setState({ time: this.state.time + 1 });
-    }
-
-    componentDidMount() { 
-        setInterval(() => { this.increment() }, 1000); 
-    }
-
-
-    render() {
-        return (
-            <div className="header">
-                <img src={logo} className="App-logo" alt="logo" />
-
-            East Villagers Elementary School
-
-            <div className="counter">You have spent {this.state.time} seconds on our site!</div>
-            </div>
-        )
-    }
-
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`scrollable-force-tabpanel-${index}`}
+            aria-labelledby={`scrollable-force-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
 }
 
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
 
+function a11yProps(index) {
+    return {
+        id: `scrollable-force-tab-${index}`,
+        'aria-controls': `scrollable-force-tabpanel-${index}`,
+    };
+}
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        width: '100%',
+        backgroundColor: theme.palette.background.paper,
+    },
+}));
 
+export default function ScrollableTabsButtonForce() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-export default Header;
+    return (
+        <div className={classes.root}>
+            <AppBar position="static" color="default">
+                East Villagers Elementary School
+        <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="on"
+                    indicatorColor="primary"
+                    textColor="primary"
+                    aria-label="scrollable force tabs example"
+                >
+                    <Tab label="Home" component={Link} icon={<HomeIcon />} to="/" {...a11yProps(0)} />
+                    <Tab label="Math" component={Link} icon={<AddIcon />} to="/math" {...a11yProps(1)} />
+                    <Tab label="Science" component={Link} icon={<SearchIcon />} to="/science" {...a11yProps(2)} />
+                    <Tab label="Geography" component={Link} icon={<PublicIcon />} to="/geography" {...a11yProps(3)} />
+                </Tabs>
+            </AppBar>
+        </div>
+    );
+}
