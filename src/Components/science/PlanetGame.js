@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
 import Mercury from "../../images/Mercury.png"
 import Venus from "../../images/Venus.png"
 import Earth from "../../images/Earth.png"
@@ -17,85 +16,126 @@ class PlanetGame extends Component {
     state = {
         merc: false, venus: false, earth: false, mars: false,
         jup: false, sat: false, uran: false, nept: false,
-        targetplanet: "",
-        info: 0,
-        start: false
+        targetplanet: 0,
+        info: false,
+        start: false,
+        planetInfo: [],
+        modalOpen: false
+    }
+
+    componentDidMount() {
+        fetch('https://agile-caverns-57379.herokuapp.com/science')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({ planetInfo: data })
+            })
+            .catch(console.log)
+            {document.body.classList.add("scienceBackground")}
     }
 
     setTarget = () => {
-        var target = Math.floor(Math.random() * 8) + 1;
-        if(target === 1) {
-            this.setState({merc: true, targetplanet: "Mercury"});
+        var target = Math.floor(Math.random() * 8);
+        if (target === 0) {
+            this.setState({ merc: true, targetplanet: target });
         }
-        else if(target === 2) {
-            this.setState({venus: true, targetplanet: "Venus"});
+        else if (target === 1) {
+            this.setState({ venus: true, targetplanet: target });
         }
-        else if(target === 3) {
-            this.setState({earth: true, targetplanet: "Earth"});
+        else if (target === 2) {
+            this.setState({ earth: true, targetplanet: target });
         }
-        else if(target === 4) {
-            this.setState({mars: true, targetplanet: "Mars"});
+        else if (target === 3) {
+            this.setState({ mars: true, targetplanet: target });
         }
-        else if(target === 5) {
-            this.setState({jup: true, targetplanet: "Jupiter"});
+        else if (target === 4) {
+            this.setState({ jup: true, targetplanet: target });
         }
-        else if(target === 6) {
-            this.setState({sat: true, targetplanet: "Saturn"});
+        else if (target === 5) {
+            this.setState({ sat: true, targetplanet: target });
         }
-        else if(target === 7) {
-            this.setState({uran: true, targetplanet: "Uranus"});
+        else if (target === 6) {
+            this.setState({ uran: true, targetplanet: target });
         }
-        else if(target === 8) {
-            this.setState({nept: true, targetplanet: "Neptune"});
+        else if (target === 7) {
+            this.setState({ nept: true, targetplanet: target });
         }
     }
 
     setStart = () => {
-        this.setState({start: true});
-        this.setTarget();
+        this.setState({ start: true }, this.setTarget);
     }
 
     displayInfo = () => {
-        console.log("Correct")
-        if (this.state.info === 0) {
-            this.setState({
-                info: 1
-            })
-        } else {
-            this.setState({
-                info: 0
-            })
-        }
+        console.log("correct selection");
+        this.setState({ modalOpen: true, info: true });
+        
     }
 
     tryAgain = () => {
-
+        console.log("incorrect selection");
+        this.setState({ modalOpen: true, info: false })
     }
 
-    render () {
+    resetTarget = () => {
+        console.log("resetting target planet");
+        this.setState({ modalOpen: false, info: false }, this.setTarget);
+    }
+
+    handleClose = () => {
+        console.log("closing modal");
+        this.setState({ modalOpen: false, info: false });
+    }
+    
+    componentWillUnmount () {document.body.classList.remove("scienceBackground")}
+
+    render() {
         return (<div>
+            <Modal show={this.state.modalOpen} handleClose={this.handleClose} >
+                {this.state.info ? (<div>
+                    <h1>{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].name : "" }</h1>
+                    <h2>{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].description : "" }</h2>
+                    <Button className="button" variant="contained" onClick={this.resetTarget}>Reset</Button> </div>)
+                : "Try Again!"}                
+            </Modal>
             <div>
-                
+
                 <h1 className="titles">Our Solar System</h1>
-                <p className="start" >{this.state.start ? "" : <Button variant="contained" onClick={this.setStart}>Start</Button>}</p>
-                {this.state.start ? <h3 className="titles">Select {this.state.targetplanet}</h3> : ""}
+                <p align="center" >{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.setStart}>Click To Play</Button>}</p>
+                {this.state.start ? <h3 className="titles">Select {this.state.planetInfo[this.state.targetplanet].name}</h3> : ""}
             </div>
             <div align="center">
-                <img className="planets" alt="" src={Mercury} onClick={this.state.merc ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" alt="" src={Venus} onClick={this.state.venus ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" alt="" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" alt="" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain()}/>
+                <span className="sun"></span>
+                <img className="planets mercury" alt="" src={Mercury} onClick={this.state.merc ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets venus" alt="" src={Venus} onClick={this.state.venus ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets earth" alt="" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets mars" alt="" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain} />
+            {/* </div>
+            <div align="center"> */}
+                <img className="planets jupiter" alt="" src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets saturn" alt="" src={Saturn}  onClick={this.state.sat ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets uranus" alt="" src={Uranus}  onClick={this.state.uran ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets neptune" alt="" src={Neptune} onClick={this.state.nept ? this.displayInfo : this.tryAgain} />
             </div>
-            <div align="center">
-                <img className="planets" alt=""  src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img alt="" src={Saturn} width="300" height="200" onClick={this.state.sat ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img alt="" src={Uranus} width="300" height="200" onClick={this.state.uran ? this.displayInfo : this.tryAgain()}/> &nbsp;
-                <img className="planets" alt="" src={Neptune} onClick={this.state.nept ? this.displayInfo : this.tryAgain()}/>
-            </div>
+            
 
         </div>)
     }
 }
+
+const Modal = ({ handleClose, show, children }) => {
+    const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+
+    return (
+        <div className={showHideClassName}>
+            <section className='modal-main'>
+                {children}
+                <Button className="button" variant="contained" onClick={handleClose}>
+                    Close
+                </Button>
+            </section>
+        </div>
+    );
+};
 
 
 export default PlanetGame;
