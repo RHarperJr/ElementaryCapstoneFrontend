@@ -100,8 +100,9 @@ class PlanetGame extends Component {
             <div>
 
                 <h1 className="titles">Our Solar System</h1>
+                <h2 className="smallTitles">Click the button below to start! If you identify the right planet, you'll get some fun facts!</h2>
                 <p align="center" >{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.setStart}>Click To Play</Button>}</p>
-                {this.state.start ? <h3 className="titles">Select {this.state.planetInfo[this.state.targetplanet].name}</h3> : ""}
+                {this.state.start ? <h3 className="mediumTitles">Select {this.state.planetInfo[this.state.targetplanet].name}</h3> : ""}
             </div>
             <div align="center">
                 <span className="sun"></span>
@@ -109,8 +110,6 @@ class PlanetGame extends Component {
                 <img className="planets venus" alt="" src={Venus} onClick={this.state.venus ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets earth" alt="" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets mars" alt="" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain} />
-            {/* </div>
-            <div align="center"> */}
                 <img className="planets jupiter" alt="" src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets saturn" alt="" src={Saturn}  onClick={this.state.sat ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets uranus" alt="" src={Uranus}  onClick={this.state.uran ? this.displayInfo : this.tryAgain} /> &nbsp;

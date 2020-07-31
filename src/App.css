@@ -46,9 +46,8 @@
   position: fixed;
   bottom: 0px;
   width: 99vw;
-  font-size: 16;
-  font-weight: bold;
-  line-height: 5;
+  font-size: small;
+  line-height: 3;
   letter-spacing: normal;
   padding-bottom: 5;
   text-align: center;
@@ -57,7 +56,7 @@
   margin:10px;
 }
 .header{
-  background-color: lightskyblue;
+  background-color: #ade498;
   height: 70px;
   padding-top: 10px;
   padding-bottom: 5px;
@@ -170,6 +169,20 @@
   font-size: xlarge;
 }
 
+.smallTitles{
+  text-align: center;
+  font-family: cursive;
+  color: white; 
+  font-size: medium;
+}
+
+.mediumTitles{
+  text-align: center;
+  font-family: cursive;
+  color: white; 
+  font-size: larger;
+}
+
 .planets{
   padding-right: 3vw;
 }
@@ -187,28 +200,28 @@
 }
 
 .mercury {
-width: 1vw; 
-height: 1vw;
+width: 1.5vw; 
+height: 1.5vw;
 }
 
 .venus {
-width: 1.3vw; 
-height: 1.3vw;
+width: 3vw; 
+height: 3vw;
 }
 
 .earth {
-width: 1.4vw; 
-height: 1.4vw;
+width: 4.2vw; 
+height: 4.2vw;
 }
 
 .mars {
-  width: 2vw; 
-  height: 2vw;
+  width: 2.5vw; 
+  height: 2.5vw;
 }
 
 .jupiter {
-  width: 9.2vw; 
-  height: 9.2vw;
+  width: 7vw; 
+  height: 7vw;
 
 }
 
