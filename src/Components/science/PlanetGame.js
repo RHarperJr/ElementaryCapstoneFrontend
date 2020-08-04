@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom';
 import Mercury from "../../images/Mercury.png"
 import Venus from "../../images/Venus.png"
 import Earth from "../../images/Earth.png"
@@ -30,7 +31,7 @@ class PlanetGame extends Component {
                 this.setState({ planetInfo: data })
             })
             .catch(console.log)
-            {document.body.classList.add("scienceBackground")}
+        { document.body.classList.add("scienceBackground") }
     }
 
     setTarget = () => {
@@ -68,7 +69,7 @@ class PlanetGame extends Component {
     displayInfo = () => {
         console.log("correct selection");
         this.setState({ modalOpen: true, info: true });
-        
+
     }
 
     tryAgain = () => {
@@ -85,17 +86,18 @@ class PlanetGame extends Component {
         console.log("closing modal");
         this.setState({ modalOpen: false, info: false });
     }
-    
-    componentWillUnmount () {document.body.classList.remove("scienceBackground")}
+
+    componentWillUnmount() { document.body.classList.remove("scienceBackground") }
 
     render() {
         return (<div>
             <Modal show={this.state.modalOpen} handleClose={this.handleClose} >
                 {this.state.info ? (<div>
-                    <h1>{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].name : "" }</h1>
-                    <h2>{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].description : "" }</h2>
-                    <Button className="button" variant="contained" onClick={this.resetTarget}>Reset</Button> </div>)
-                : "Try Again!"}                
+                    <p className="planetTitle">{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].name : ""}</p>
+                    <p className="planetDescription">{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].description : ""}</p>
+
+                    <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.resetTarget}>Play Again</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
+                    <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> Almost...click to try again! </Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p>}
             </Modal>
             <div>
 
@@ -111,11 +113,11 @@ class PlanetGame extends Component {
                 <img className="planets earth" alt="" src={Earth} onClick={this.state.earth ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets mars" alt="" src={Mars} onClick={this.state.mars ? this.displayInfo : this.tryAgain} />
                 <img className="planets jupiter" alt="" src={Jupiter} onClick={this.state.jup ? this.displayInfo : this.tryAgain} /> &nbsp;
-                <img className="planets saturn" alt="" src={Saturn}  onClick={this.state.sat ? this.displayInfo : this.tryAgain} /> &nbsp;
-                <img className="planets uranus" alt="" src={Uranus}  onClick={this.state.uran ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets saturn" alt="" src={Saturn} onClick={this.state.sat ? this.displayInfo : this.tryAgain} /> &nbsp;
+                <img className="planets uranus" alt="" src={Uranus} onClick={this.state.uran ? this.displayInfo : this.tryAgain} /> &nbsp;
                 <img className="planets neptune" alt="" src={Neptune} onClick={this.state.nept ? this.displayInfo : this.tryAgain} />
             </div>
-            
+
 
         </div>)
     }
@@ -128,9 +130,6 @@ const Modal = ({ handleClose, show, children }) => {
         <div className={showHideClassName}>
             <section className='modal-main'>
                 {children}
-                <Button className="button" variant="contained" onClick={handleClose}>
-                    Close
-                </Button>
             </section>
         </div>
     );

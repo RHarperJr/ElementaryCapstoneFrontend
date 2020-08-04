@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import '../../App.css';
-import Science from '../../images/Science.png';
-import Geography from '../../images/Geography.png';
-import math from '../../images/math.png';
+import scale from '../../images/scale.png';
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
@@ -24,7 +21,7 @@ class MathMain extends Component {
                         <Card className="gridCard">
                             <CardMedia
                                 component="img"
-                                image={math}
+                                image={calculator}
                             />
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p">
@@ -36,8 +33,9 @@ class MathMain extends Component {
                     <Grid item s={12} component={Link} to="/math/weight">
                         <Card className="gridCard">
                             <CardMedia
+                                className="scale"
                                 component="img"
-                                image={Science}
+                                image={scale}
                             />
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p">

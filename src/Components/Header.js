@@ -64,7 +64,7 @@ export default function ScrollableTabsButtonForce() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="default">
+            <AppBar position="static" color="secondary">
                 East Villagers Elementary School
         <Tabs
                     value={value}
@@ -73,7 +73,7 @@ export default function ScrollableTabsButtonForce() {
                     scrollButtons="on"
                     indicatorColor="primary"
                     textColor="primary"
-                    aria-label="scrollable force tabs example"
+                    aria-label="nav bar header tabs"
                 >
                     <Tab label="Home" component={Link} icon={<HomeIcon />} to="/" {...a11yProps(0)} />
                     <Tab label="Math" component={Link} icon={<AddIcon />} to="/math" {...a11yProps(1)} />
