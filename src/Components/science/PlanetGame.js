@@ -79,7 +79,8 @@ class PlanetGame extends Component {
 
     resetTarget = () => {
         console.log("resetting target planet");
-        this.setState({ modalOpen: false, info: false }, this.setTarget);
+        this.setState({ modalOpen: false, info: false, merc: false, venus: false, earth: false, mars: false,
+            jup: false, sat: false, uran: false, nept: false }, this.setTarget);
     }
 
     handleClose = () => {
