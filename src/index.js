@@ -12,18 +12,19 @@ import PlanetGame from './Components/science/PlanetGame';
 import GeographyGame from './Components/geography/GeographyGame';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+
   
 const myRoutes = (
   <Router>
-    <Header />
+    <Header/>
     <div>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/math" component={MathMain} />
-        <Route path="/math/calc" component={DiscountCalc} />
-        <Route path="/math/weight" component={WeightGame} />
-        <Route path="/science" component={PlanetGame} />
-        <Route path="/geography" component={GeographyGame} />
+        <Route exact path="/" component={App}/>
+        <Route exact path="/math" component={MathMain}/>
+        <Route path="/math/calc" component={DiscountCalc}/>
+        <Route path="/math/weight" component={WeightGame}/>
+        <Route path="/science" component={PlanetGame}/>
+        <Route path="/geography" component={GeographyGame}/>
         <Route component={NotFound} />
       </Switch>
     </div>
@@ -31,7 +32,10 @@ const myRoutes = (
   </Router>
 )
 
+
 ReactDOM.render(
   myRoutes,
   document.getElementById('root')
 );
+
+

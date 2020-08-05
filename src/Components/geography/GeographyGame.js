@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 class GeographyGame extends Component {
 
@@ -9,6 +10,12 @@ class GeographyGame extends Component {
         win: false,
         start: false
     }
+
+    componentDidMount(){
+        {document.body.classList.add("geography-wrapper")}
+    }
+
+    componentWillUnmount() { document.body.classList.remove("geography-wrapper") }
 
     onMapClick = (event) => {
         var tempCont = event.currentTarget.id
@@ -21,12 +28,6 @@ class GeographyGame extends Component {
             objCopy[tempCont] = false;
         }
         console.log("ObjCopy object: " + objCopy);
-        // this.setState(prevState => ({
-        //     continentMap: {
-        //         ...prevState.continentMap,
-        //         tempCont: true
-        //     }
-        // }))
         this.setState({continentMap: objCopy}, this.check);
         console.log("this.state.continentMap[" + tempCont + "] = "  + this.state.continentMap[tempCont]);//africa);
     }
@@ -99,18 +100,21 @@ class GeographyGame extends Component {
         return (<div>
             <Modal show={this.state.modalOpen} handleClose={this.handleClose} >
                     {this.state.win ? (<div>
-                        <p className="planetTitle">Correct!</p>
-                        <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.reset}>Play Again</Button> </p> </div>) :
-                        <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> Not quite, try again! </Button> </p>}
+                        <h1 className="cont-title">Correct!</h1>
+                        <p className="buttonContModal"> <Button variant="contained" onClick={this.reset}>Play Again</Button>  <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
+                        <div><h1 className="cont-title">Not quite...</h1><p className="buttonContModal">That was not {this.state.targetContinent}.</p>
+                        <p><Button variant="contained" onClick={this.handleClose}> Try again! </Button>  <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p></div>}
             </Modal>
-
-            <h1>Continents</h1>
-            <h2>Select {this.state.targetContinent}</h2>
-            <p>{this.state.start ? "" : <Button variant="contained" onClick={this.Start}>Start</Button>}</p>
+            <div className="cont-header">                
+                <h1 className="cont-title">Continents</h1>
+                <h2 className="cont-text">Click the correct continent!</h2>
+                <p>{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.Start}>Click to play</Button>}</p>
+            </div>
 
             {this.state.start ? 
-            <div className='row'>
-                <svg className="map-img" xmlns="http://www.w3.org/2000/svg" width="672" height="315" viewBox="0 0 672 315" id="svg5249">
+            <div className='map-container-sqrd'><div className='map-container'>
+                <h2 className="cont-text">Select {this.state.targetContinent}</h2>
+                <svg className="map-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 315" id="svg5249" preserveAspectRatio="xMidYMid meet">
                 <defs id="defs5257">
                     <linearGradient id="linearGradient4299">
                     <stop offset="0" id="stop4301" stopColor="#cc5252" />
@@ -199,7 +203,7 @@ class GeographyGame extends Component {
                     <path id="path5253" d="M568.205 268.9c.088-.32.183-.597.225-.88.008-.057-.18-.14-.28-.214-.145.276-.297.552-.426.837-.003.01.227.12.48.257z" />
                 </g>
                 </svg>
-            </div> : ""}
+            </div></div> : ""}
           </div>)
     }
 }

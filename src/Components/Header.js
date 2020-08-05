@@ -11,6 +11,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import App from '../App';
+
 
 
 function TabPanel(props) {
@@ -54,9 +56,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ScrollableTabsButtonForce() {
+
+
+function ScrollableTabsButtonForce() {
     const classes = useStyles();
+    
     const [value, setValue] = React.useState(0);
+    // a11yProps(index);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -64,9 +70,8 @@ export default function ScrollableTabsButtonForce() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="secondary">
-                East Villagers Elementary School
-        <Tabs
+            <AppBar position="static" color="secondary" id="appbar">
+                <Tabs
                     value={value}
                     onChange={handleChange}
                     variant="scrollable"
@@ -80,7 +85,25 @@ export default function ScrollableTabsButtonForce() {
                     <Tab label="Science" component={Link} icon={<SearchIcon />} to="/science" {...a11yProps(2)} />
                     <Tab label="Geography" component={Link} icon={<PublicIcon />} to="/geography" {...a11yProps(3)} />
                 </Tabs>
+                {/* <TabPanel value={value} index={0}>
+                    Item One
+                    {console.log("inside tab panel 0")}
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    Item Two
+                    {console.log("inside tab panel 1")}
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    Item Three
+                    {console.log("inside tab panel 2")}
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    Item Four
+                    {console.log("inside tab panel 3")}
+                </TabPanel> */}
             </AppBar>
         </div>
     );
 }
+
+export default ScrollableTabsButtonForce;

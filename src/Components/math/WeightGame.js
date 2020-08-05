@@ -113,9 +113,10 @@ class WeightGame extends Component {
                         <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.reset}>Play Again</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
                         <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> You went over! Click to restart </Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p>}
                 </Modal>
-                <h1 className="mathTitle">THE FRUIT STAND</h1>
+                 <h1 className="mathTitle text-4">Fruit Stand</h1> 
+                {/* <div class="fruittext">FRUIT</div><div class="fruittext"> STAND</div> */}
                 <h2 className="mathSmallTitles">Click the button below to start! Add fruit to the basket to hit the desired weight!</h2>
-                <p align="center" >{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.Start}>Click To Play</Button>}</p>
+                <p id="basketButton">{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.Start}>Click To Play</Button>}</p>
 
                 {this.state.start ?
                     <div text-align="center" >

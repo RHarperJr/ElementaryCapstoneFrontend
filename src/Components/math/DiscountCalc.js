@@ -14,6 +14,13 @@ class DiscountCalc extends Component {
         price: 0, discount: 0, finalValue: 0, savings: 0, info: 0
     }
 
+    componentDidMount(){
+        {document.body.classList.add("DisCalcBg")}
+    }
+
+    componentWillUnmount() { document.body.classList.remove("DisCalcBg") }
+
+
     showInfo = () => {
         {
             if (this.state.info === 0) {
@@ -58,10 +65,10 @@ class DiscountCalc extends Component {
     }
 
     render() {
-        return (<div>
+        return (<div className="DisCalcBg">
+            <h1 className="DisCalcTitle">Discount Calculator!</h1>
             <div className="bodyWrapper">
                 <div className="calculator">
-                    Discount Calculator
                     <div className="inputs">
                         Enter the original price: &nbsp;
                             <TextField error={this.state.price < 0 || isNaN(this.state.price)}

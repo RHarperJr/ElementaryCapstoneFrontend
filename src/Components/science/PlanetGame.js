@@ -93,11 +93,12 @@ class PlanetGame extends Component {
         return (<div>
             <Modal show={this.state.modalOpen} handleClose={this.handleClose} >
                 {this.state.info ? (<div>
+                    <h1 className="cont-title">Correct!</h1>
                     <p className="planetTitle">{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].name : ""}</p>
                     <p className="planetDescription">{this.state.planetInfo[this.state.targetplanet] ? this.state.planetInfo[this.state.targetplanet].description : ""}</p>
-
                     <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.resetTarget}>Play Again</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
-                    <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> Almost...click to try again! </Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p>}
+ <div><h1 className="cont-title">Not quite...</h1>
+ <p><Button variant="contained" onClick={this.handleClose}> Try again! </Button>  <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p></div>}
             </Modal>
             <div>
 
