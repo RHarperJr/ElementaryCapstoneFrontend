@@ -137,8 +137,10 @@
   /* display: inline-block; */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 .basketWeight {
-  font-family: cursive;
+  font-family: 'Patrick Hand';
   font-size: small;
   width: 20vw;
   /* padding-left: 20vw; */
@@ -250,7 +252,7 @@
   color:black;
   font-size: 50px;
  line-height: 84%; 
-  font-family: cursive;
+ font-family: 'Patrick Hand';
    background-clip: text;
   -webkit-background-clip: text; 
    text-shadow: 7px 7px 0px #a4bfd875; 
@@ -259,7 +261,7 @@
 
 .mathSmallTitles {
   text-align: center;
-  font-family: cursive; 
+  font-family: 'Patrick Hand'; 
   font-size: medium;
   color: black; 
   font-size: medium;
@@ -274,7 +276,7 @@
 }
 
 .fruitWeight {
- font-family:cursive;
+  font-family: 'Patrick Hand';
  font-size: medium;
  font-weight: bold;
  color: black;
@@ -284,7 +286,7 @@
 .fruitTitle {
   font-size: x-large;
   text-shadow: 2px 2px 0px gainsboro;
-  font-family: sans-serif;
+  font-family: 'Patrick Hand';
   font-weight: bold;
   color: black;
 }
