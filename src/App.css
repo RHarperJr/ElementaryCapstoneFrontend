@@ -318,16 +318,16 @@
 
 .smallTitles{
   text-align: center;
-  font-family: cursive;
+  font-family: 'Patrick Hand';
   color: white; 
-  font-size: medium;
+  font-size: larger;
 }
 
 .mediumTitles{
   text-align: center;
-  font-family: cursive;
+  font-family: 'Patrick Hand';
   color: white; 
-  font-size: larger;
+  font-size: x-large;
 }
 
 .planets{
