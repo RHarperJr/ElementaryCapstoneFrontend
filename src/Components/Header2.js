@@ -23,6 +23,17 @@ class ScrollableTabsButtonForce extends Component {
             
     }
 
+    componentDidMount() {
+        var current = window.location.href;
+        if (current.indexOf("math") > 0) {
+            this.setState({value: 1})
+        } else if (current.indexOf("science") > 0) {
+            this.setState({value: 2})
+        } else if (current.indexOf("geography") > 0) {
+            this.setState({value: 3})
+        }
+    }
+
     componentWillMount() {
         // will trigger the callback function whenever a new Route renders a component(as long as this component stays mounted as routes change)
         this.props.history.listen(() => {
