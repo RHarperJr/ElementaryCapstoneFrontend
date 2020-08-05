@@ -113,28 +113,31 @@ class WeightGame extends Component {
                         <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.reset}>Play Again</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
                         <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> You went over! Click to restart </Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p>}
                 </Modal>
-                 <h1 className="mathTitle text-4">Fruit Stand</h1> 
+                 <h1 className="mathTitle text-4">fruit stand</h1> 
                 {/* <div class="fruittext">FRUIT</div><div class="fruittext"> STAND</div> */}
-                <h2 className="mathSmallTitles">Click the button below to start! Add fruit to the basket to hit the desired weight!</h2>
+                <h2 className="mathSmallTitles">add fruit to the basket to hit the target weight!</h2>
                 <p id="basketButton">{this.state.start ? "" : <Button className="startButton" variant="contained" onClick={this.Start}>Click To Play</Button>}</p>
 
                 {this.state.start ?
                     <div text-align="center" >
                         <div text-align="center" className="bodyWrapper" >
-                            <div className="float"><img className="fruit apple" alt="" src={Apple} onClick={this.addFruit.bind(this, 6)}/><p  align="center" className="fruitWeight" >Apples <p align="center"> weight: 7g</p> </p> </div> &nbsp;
-                            <div className="float"><img className="fruit banana" alt="" src={Bananas} onClick={this.addFruit.bind(this, 4)} /> <p align="center" className="fruitWeight"> Bananas <p align="center"> weight: 10g </p> </p> </div> &nbsp;
-                            <div className="float"><img className="fruit blueberry" alt="" src={Blueberry} onClick={this.addFruit.bind(this, 1)} /> <p align="center"  className="fruitWeight"> Blueberries <p align="center"> weight: 1g</p> </p> </div> &nbsp;
-                            <div className="float"> <img className="fruit kiwi" alt="" src={Kiwi} onClick={this.addFruit.bind(this, 2)} /> <p align="center" className="fruitWeight"> Kiwis <p align="center"> weight: 3g </p> </p> </div> &nbsp;
-                            <div className="float"> <img className="fruit oranges" alt="" src={Orange} onClick={this.addFruit.bind(this, 5)} /> <p align="center" className="fruitWeight"> Oranges <p align="center"> weight: 5g </p> </p> </div> &nbsp;
-                            <div className="float"> <img className="fruit watermelon" alt="" src={Watermelon} onClick={this.addFruit.bind(this, 3)} /> <p align="center" className="fruitWeight"> Watermelon <p align="center"> weight:15g </p> </p> </div> 
+                            <div className="float"><img className="fruit apple" alt="" src={Apple} onClick={this.addFruit.bind(this, 6)}/><p  align="center" className="fruitWeight" >apples <p align="center"> weight: 7g</p> </p> </div> &nbsp;
+                            <div className="float"><img className="fruit banana" alt="" src={Bananas} onClick={this.addFruit.bind(this, 4)} /> <p align="center" className="fruitWeight"> bananas <p align="center"> weight: 10g </p> </p> </div> &nbsp;
+                            <div className="float"><img className="fruit blueberry" alt="" src={Blueberry} onClick={this.addFruit.bind(this, 1)} /> <p align="center"  className="fruitWeight"> blueberries <p align="center"> weight: 1g</p> </p> </div> &nbsp;
+                            <div className="float"> <img className="fruit kiwi" alt="" src={Kiwi} onClick={this.addFruit.bind(this, 2)} /> <p align="center" className="fruitWeight"> kiwis <p align="center"> weight: 3g </p> </p> </div> &nbsp;
+                            <div className="float"> <img className="fruit oranges" alt="" src={Orange} onClick={this.addFruit.bind(this, 5)} /> <p align="center" className="fruitWeight"> oranges <p align="center"> weight: 5g </p> </p> </div> &nbsp;
+                            <div className="float"> <img className="fruit watermelon" alt="" src={Watermelon} onClick={this.addFruit.bind(this, 3)} /> <p align="center" className="fruitWeight"> watermelon <p align="center"> weight:15g </p> </p> </div> 
                         </div>
-                        <div align="center" className="basketWrapper">
-                            <p>
-                            {this.state.currentWeight === 0 ? <img className="basket" alt="" src={emptyBasket} /> : <img className="basket" alt="" src={Basket} />}
-                            </p>
-                            <h2 className="targetWeight"> Target weight: {this.state.targetWeight}g </h2>
-                            <h2 className="currentWeight">Current weight: {this.state.currentWeight}g </h2>   
-                            <Button variant="contained" onClick={this.reset}>Reset</Button> 
+                        <div className="basketWrapper">
+                            <div className="basketWeight">
+                                <h2>target weight: {this.state.targetWeight}g</h2>
+                                <h2>current weight: {this.state.currentWeight}g</h2>
+                                <p><Button variant="contained" onClick={this.reset}>Reset</Button></p> 
+                            </div>
+                            <div>
+                                {this.state.currentWeight === 0 ? <img className="basket" alt="" src={emptyBasket} /> : <img className="basket" alt="" src={Basket} />}
+                            </div>    
+                            
                         </div>
 
                     </div> : ""}

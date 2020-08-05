@@ -22,6 +22,7 @@ class MathMain extends Component {
         return (
             <Container>
                 <h1 className="home">Math Games</h1>
+                <h3 className="homeSubTitle">Choose a game!</h3>
                 <Grid container className="gridRoot" spacing={5} justify="center">
                     {/* <Grid item> */}
                     {/* <Grid container justify="center" spacing={spacing}> */}
@@ -47,7 +48,7 @@ class MathMain extends Component {
                             />
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Fruit Game!
+                                    Fruit Game: Learn about addition!
                                 </Typography>
                             </CardContent>
                         </Card>

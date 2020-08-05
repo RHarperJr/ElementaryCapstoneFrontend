@@ -12,11 +12,11 @@ import PlanetGame from './Components/science/PlanetGame';
 import GeographyGame from './Components/geography/GeographyGame';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-
+import HeaderWithRouter2 from './Components/Header2';
   
 const myRoutes = (
   <Router>
-    <Header/>
+    <HeaderWithRouter2/>
     <div>
       <Switch>
         <Route exact path="/" component={App}/>

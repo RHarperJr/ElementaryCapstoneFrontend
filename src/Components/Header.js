@@ -12,6 +12,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import App from '../App';
+import {withRouter} from "react-router";
 
 
 
@@ -105,5 +106,6 @@ function ScrollableTabsButtonForce() {
         </div>
     );
 }
+const HeaderWithRouter = withRouter(ScrollableTabsButtonForce);
 
-export default ScrollableTabsButtonForce;
+export default HeaderWithRouter;
