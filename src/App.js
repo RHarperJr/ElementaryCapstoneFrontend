@@ -24,7 +24,7 @@ class App extends Component {
     return (
     
       <Container>
-        <h1 className="home">Cool Learning Games</h1>
+        <h1 className="home">"Cool games for kids who want to learn good and do other things good too"</h1>
         <h3 className="homeSubTitle">Click one of the icons below to play a game</h3>
         <Grid container className="gridRoot" spacing={5} justify="center">
           {/* <Grid item> */}

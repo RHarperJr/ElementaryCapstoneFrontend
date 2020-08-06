@@ -16,6 +16,18 @@
   }
 }
 
+.footerlogo{
+  /* background-color: #6badeb;
+  position: fixed;
+  bottom: 0px;
+  width: 98.75vw;  */
+  font-size: small;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align:center;
+  font-weight: bold;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -49,7 +61,7 @@
   width: 98.75vw; 
   font-size: small;
   /* font-weight: bold; */
-  line-height: 3;
+  line-height: 2;
   letter-spacing: normal;
   padding-bottom: 5;
   text-align: center;
@@ -233,11 +245,11 @@
   text-align: center;
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
 .home {
   text-align: center;
-  font-family: 'Montserrat', sans-serif; 
-  font-weight: 700;
+  font-family: 'Concert One', cursive; 
 }
 
 .homeSubTitle {
@@ -494,6 +506,7 @@ height: 4.2vw;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   padding: 1vw;
+  z-index: 10;
 }
 
 .modal-main {

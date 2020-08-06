@@ -111,7 +111,8 @@ class WeightGame extends Component {
                     {this.state.win ? (<div>
                         <p className="fruitTitle">You Won!</p>
                         <p className="buttonPlanetModal"> <Button variant="contained" onClick={this.reset}>Play Again</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button></p> </div>) :
-                        <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}> You went over! Click to restart </Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p>}
+                        <div><p className="fruitTitle">You went over!</p>
+                        <p className="buttonPlanetModal"><Button variant="contained" onClick={this.handleClose}>Click to restart</Button> <Button variant="contained" component={Link} to={"/"}>Return to Home</Button> </p></div>}
                 </Modal>
                  <h1 className="mathTitle text-4">fruit stand</h1> 
                 {/* <div class="fruittext">FRUIT</div><div class="fruittext"> STAND</div> */}
@@ -132,7 +133,7 @@ class WeightGame extends Component {
                             <div className="basketWeight">
                                 <h2>target weight: {this.state.targetWeight}g</h2>
                                 <h2>current weight: {this.state.currentWeight}g</h2>
-                                <p><Button variant="contained" onClick={this.reset}>Reset</Button></p> 
+                                <p><Button disabled={this.state.modalOpen} variant="contained" onClick={this.reset}>Reset</Button></p> 
                             </div>
                             <div>
                                 {this.state.currentWeight === 0 ? <img className="basket" alt="" src={emptyBasket} /> : <img className="basket" alt="" src={Basket} />}

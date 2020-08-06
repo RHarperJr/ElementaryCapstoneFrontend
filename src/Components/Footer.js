@@ -6,6 +6,7 @@ var date=moment().format("MM/DD/YYYY");
 
 const Footer = () => <div className = "footer"> About Us | Terms of Use | Privacy Policy |
  Date: {date} 
+ <div className="footerlogo"> Learn Good </div>
  </div>
 //<img src = {logo} className="App-logo" alt="logo" ></img>
 export default Footer; 
